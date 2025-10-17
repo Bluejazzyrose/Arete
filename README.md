@@ -47,3 +47,6 @@ References for Python:
     * [Get & post](https://healeycodes.com/talking-between-languages)
 
 References for Greek Mythology:
+* [Locations in Greek mythology](https://www.greekmythology.com/Myths/Places/places.html)
+* [Plutus, Greek god of agricultural bounty](https://www.theoi.com/Georgikos/Ploutos.html)
+* [Greek monsters and other creatures](https://en.m.wikipedia.org/wiki/List_of_Greek_mythological_creatures)
