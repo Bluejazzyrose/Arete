@@ -39,6 +39,7 @@ References for Python:
 * PyGame
     * [Basic Tutorial](https://www.geeksforgeeks.org/python/pygame-tutorial/)
     * [Walkthrough Introduction](https://www.geeksforgeeks.org/python/introduction-to-pygame/)
+    * [Creating a Menu](https://www.geeksforgeeks.org/python/create-settings-menu-in-python-pygame/)
 * Flask
     * [Flask tutorial](https://www.geeksforgeeks.org/flask-tutorial/)
     * [Flask Basic Tutorial](https://www.geeksforgeeks.org/python-introduction-to-web-development-using-flask/)
