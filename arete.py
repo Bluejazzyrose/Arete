@@ -15,23 +15,6 @@ from player_character.fury import Fury
 from player_character.naiad import Naiad
 from player_character.satyr import Satyr
 
-# Get the absolute path to the directory where the script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Construct the absolute path to the CSV file (assuming it's in the same directory)
-csv_file_name = "characters.csv"
-character_save_file = os.path.join(script_dir, csv_file_name)
-
-"""
-# Test logic: read the CSV file using its absolute path
-try:
-    df = pandas.read_csv(absolute_csv_path)
-    print("CSV file loaded successfully:")
-    print(df.head())
-except FileNotFoundError:
-    print(f"Error: The file '{absolute_csv_path}' was not found.")
-except Exception as e:
-    print(f"An error occurred: {e}")
-"""
 
 """
 Arete class
@@ -43,13 +26,14 @@ gameplay methods/function:  move, interact, arete, main
 """
 
 class Arete:
-    def __init__(self):
-        pass
+    def __init__(self, mname):
+        # create Map from dataframe
+        current_map = Map(mname)
 
     """
     create_username method
     prompts the user for input and returns a confirmed name choice
-    """
+    
     def create_username(self, characters):
         while True:
             name = input("What do you want to name your character? ")
@@ -77,11 +61,11 @@ class Arete:
                 continue
         return name
 
-    """
+    
     create_character method
     menu for creating a new character
     calls create_username
-    """
+    
     def create_character(self):
         print("\nLet's create you a character!")
         print("Available Races")
@@ -116,13 +100,13 @@ class Arete:
         characters.to_csv(character_save_file, index = False)
         return character, 'elder_growth'
 
-    """
+    
     build_character method
     creates a character from saved data
     loads current map, hp, and position
     called by load_character method
     returns character
-    """
+    
     def build_character(self, data):
         if data['race'] == 'dryad':
             character = Dryad(data['name'])
@@ -141,15 +125,14 @@ class Arete:
         character.hp = data['hp']
         return character
 
-    """
+    
     load_character method
     displays saved characters from a csv file
     user chooses which character to play as
     returns the loaded character and current map
-    """
+    
     def load_character(self):
         characters = pandas.read_csv(character_save_file)
-        #characters = pandas.read_csv(file_path)
         # list available characters from dataframe
         print('Available characters:')
         for index, c in characters.iterrows():
@@ -168,10 +151,10 @@ class Arete:
                 print('That name does not match any of the characters listed.')
                 print('Check spelling and capitalization.')
 
-    """
+    
     save_character method
     takes current character data and saves it to a csv file
-    """
+    
     def save_character(self, player, cmap):
         characters = pandas.read_csv(character_save_file)
         # create variable for race
@@ -191,7 +174,7 @@ class Arete:
         characters.loc[characters['name'] == player.username] = [player.username, race, player.hp,
                                                                  player.x, player.y, mname]
         # save updated dataframe to csv file
-        characters.to_csv(character_save_file, index = False)
+        characters.to_csv(character_save_file, index = False)"""
 
     """
     move method
@@ -251,11 +234,9 @@ class Arete:
     framework for the actively running game
     """
     def run_game(self, player, mname):
-        # create Map from dataframe
-        current_map = Map(mname)
         # display current map name and entities with their respective positions
-        print(f'\nLoading map... {current_map.spaces.iloc[0]['space type']}\n')
-        for e in current_map.entities:
+        print(f'\nLoading map... {self.current_map.spaces.iloc[0]['space type']}\n')
+        for e in self.current_map.entities:
             print(e)
 
         # player action cycle - player action, mob actions, passive abilities
@@ -264,13 +245,13 @@ class Arete:
             action = (input("\nChoose an action (or 'x' to exit to menu): "))
             # move action
             if action.lower() == 'w' or action.lower() == 'a' or action.lower() == 's' or action.lower() == 'd':
-                current_map = self.move(action, player, current_map)
+                self.current_map = self.move(action, player, self.current_map)
             # attack action
             elif action.lower() == 'i' or action.lower() == 'j' or action.lower() == 'k' or action.lower() == 'l':
                 pass
             # interact action
             elif action.lower() == 'n':
-                self.check_interact(player, current_map)
+                self.check_interact(player, self.current_map)
             # view player stats
             elif action.lower() == 'p':
                 print(player)
@@ -283,8 +264,7 @@ class Arete:
                 player.two_ability()
             # exit action
             elif action.lower() == 'x':
-                self.save_character(player, current_map)
-                break
+                return player, self.current_map
             # buttons that don't do anything
             else:
                 print("Command had no effect.")
@@ -293,12 +273,12 @@ class Arete:
             # mobs would act here
 
             # use innate ability if appropriate
-            player.innate_ability(current_map.get_space_type(player.x, player.y))
+            player.innate_ability(self.current_map.get_space_type(player.x, player.y))
             # rejuvenate if at Elder Growth 8,8
-            if player.x == 8 and player.y == 8 and current_map.spaces.iloc[0]['space type'] == 'Elder Growth':
+            if player.x == 8 and player.y == 8 and self.current_map.spaces.iloc[0]['space type'] == 'Elder Growth':
                 player.rest()
             # display status if there is one
-            if player.status != 'none':
+            if player.status:
                 print(f'Your current status is {player.status}')
 
 """
@@ -310,12 +290,21 @@ runs the game's main menu, in which the user can
 4) view the stats of the character they've created/loaded
 5) view the controls if they're unsure how to play, or
 x) exit the program
-"""
-def main():
-    game = Arete()
-    print("\nWelcome, hoplite, to Arete: a game inspired by Greek mythology!")
 
+def main():
+    # Set up csv file path
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_file_name = "characters.csv"
+    character_save_file = os.path.join(script_dir, csv_file_name)
+    # Convert the csv file into a pandas dataframe
+    characters = pandas.read_csv(character_save_file)
+
+    # Define variables
+    player = None
+    game = Arete()
+    
     #Main Menu
+    print("\nWelcome, hoplite, to Arete: a game inspired by Greek mythology!")
     while True:
         print("\nMain Menu")
         print("1. Play")
@@ -328,7 +317,7 @@ def main():
 
         # Launch game
         if choice == '1':
-            if 'player' in locals():
+            if player:
                 # launch game
                 game.run_game(player, mname)
             else:
@@ -364,4 +353,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()"""

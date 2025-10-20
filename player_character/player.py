@@ -12,7 +12,7 @@ class Player:
         self.x = 8
         self.y = 8
         self.spd = 1
-        self.status = 'none'
+        self.status = None
         # inventory currently does nothing, but is prepped and ready for future iterations
         # self.inventory = pandas.read_csv('inventory.csv')
 
