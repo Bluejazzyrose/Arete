@@ -7,6 +7,7 @@ Player race classes and maps are imported from separate files
 """
 
 import pandas
+import os
 
 from maps.map import Map
 from player_character.dryad import Dryad
@@ -14,18 +15,14 @@ from player_character.fury import Fury
 from player_character.naiad import Naiad
 from player_character.satyr import Satyr
 
-import os
-
-#xfile_path = 'C:\Users\jafrye02\OneDrive - Wayne State College\CSC310 Data Structures\GitHub Repositories\Arete\characters.csv'
-
 # Get the absolute path to the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
-
 # Construct the absolute path to the CSV file (assuming it's in the same directory)
 csv_file_name = "characters.csv"
-absolute_csv_path = os.path.join(script_dir, csv_file_name)
+character_save_file = os.path.join(script_dir, csv_file_name)
 
-# Read the CSV file using its absolute path
+"""
+# Test logic: read the CSV file using its absolute path
 try:
     df = pandas.read_csv(absolute_csv_path)
     print("CSV file loaded successfully:")
@@ -34,6 +31,7 @@ except FileNotFoundError:
     print(f"Error: The file '{absolute_csv_path}' was not found.")
 except Exception as e:
     print(f"An error occurred: {e}")
+"""
 
 """
 Arete class
@@ -115,7 +113,7 @@ class Arete:
         # save new character to characters.csv
         characters.loc[len(characters)] = [character.username, race, character.hp,
                                            character.x, character.y, 'elder_growth']
-        characters.to_csv('characters.csv', index = False)
+        characters.to_csv(character_save_file, index = False)
         return character, 'elder_growth'
 
     """
@@ -150,7 +148,7 @@ class Arete:
     returns the loaded character and current map
     """
     def load_character(self):
-        characters = pandas.read_csv('characters.csv')
+        characters = pandas.read_csv(character_save_file)
         #characters = pandas.read_csv(file_path)
         # list available characters from dataframe
         print('Available characters:')
@@ -175,7 +173,7 @@ class Arete:
     takes current character data and saves it to a csv file
     """
     def save_character(self, player, cmap):
-        characters = pandas.read_csv('characters.csv')
+        characters = pandas.read_csv(character_save_file)
         # create variable for race
         if isinstance(player, Dryad):
             race = 'dryad'
@@ -193,7 +191,7 @@ class Arete:
         characters.loc[characters['name'] == player.username] = [player.username, race, player.hp,
                                                                  player.x, player.y, mname]
         # save updated dataframe to csv file
-        characters.to_csv('characters.csv', index = False)
+        characters.to_csv(character_save_file, index = False)
 
     """
     move method

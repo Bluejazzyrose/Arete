@@ -35,6 +35,9 @@ References for Python:
     * [Add a row to a dataframe](https://www.geeksforgeeks.org/how-to-add-one-row-in-an-existing-pandas-dataframe/)
     * [Update row values based on a condition](https://saturncloud.io/blog/how-to-update-values-in-a-specific-row-in-a-python-pandas-dataframe/#:~:text=Updating%20a%20single%20value%20in%20a%20row,-Let's%20start%20with&text=We%20can%20use%20the%20.,desired%20column%20using%20the%20%3D%20operator.)
     * [Delete 1 row from a dataframe/CSV](https://www.geeksforgeeks.org/how-to-delete-only-one-row-in-csv-with-python/)
+* PyGame
+    * [Basic Tutorial](https://www.geeksforgeeks.org/python/pygame-tutorial/)
+    * [Walkthrough Introduction](https://www.geeksforgeeks.org/python/introduction-to-pygame/)
 * Flask
     * [Flask tutorial](https://www.geeksforgeeks.org/flask-tutorial/)
     * [Flask Basic Tutorial](https://www.geeksforgeeks.org/python-introduction-to-web-development-using-flask/)
