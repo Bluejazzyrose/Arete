@@ -14,6 +14,26 @@ from player_character.fury import Fury
 from player_character.naiad import Naiad
 from player_character.satyr import Satyr
 
+import os
+
+#xfile_path = 'C:\Users\jafrye02\OneDrive - Wayne State College\CSC310 Data Structures\GitHub Repositories\Arete\characters.csv'
+
+# Get the absolute path to the directory where the script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to the CSV file (assuming it's in the same directory)
+csv_file_name = "characters.csv"
+absolute_csv_path = os.path.join(script_dir, csv_file_name)
+
+# Read the CSV file using its absolute path
+try:
+    df = pandas.read_csv(absolute_csv_path)
+    print("CSV file loaded successfully:")
+    print(df.head())
+except FileNotFoundError:
+    print(f"Error: The file '{absolute_csv_path}' was not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")
 
 """
 Arete class
@@ -131,6 +151,7 @@ class Arete:
     """
     def load_character(self):
         characters = pandas.read_csv('characters.csv')
+        #characters = pandas.read_csv(file_path)
         # list available characters from dataframe
         print('Available characters:')
         for index, c in characters.iterrows():
