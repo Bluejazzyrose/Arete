@@ -16,11 +16,9 @@ while run:
 
 # Get information about the current display to determine native resolution
 info = pygame.display.Info()
-screen_width = info.current_w
-screen_height = info.current_h
 
 # Set the display mode to fullscreen using the native resolution
-screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((1200, 600), pygame.RESIZABLE)
 
 pygame.display.set_caption("Arete")
 
