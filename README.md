@@ -24,6 +24,7 @@ References for Python:
 * [How to check if a variable exists](https://stackoverflow.com/questions/843277/how-do-i-check-if-a-variable-exists)
 * [Formatting print statements](https://docs.python.org/3/tutorial/inputoutput.html)
 * [Turning Python code into a .exe file](https://www.geeksforgeeks.org/python/convert-python-script-to-exe-file/)
+* [Publishing a game to Steam](https://partner.steamgames.com/steamdirect)
 * Lists
     * [How to remove items](https://www.geeksforgeeks.org/how-to-remove-an-item-from-the-list-in-python/)
     * [Finding an item's index](https://www.geeksforgeeks.org/python-list-index/)
