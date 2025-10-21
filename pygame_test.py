@@ -37,31 +37,26 @@ AZURE = (83, 172, 197)
 COBALT = (21, 78, 114)
 NAVY = (14, 41, 72)
 
-# Menu theme setup
-menu_bg = Theme()
-menu_bg.background_color = BaseImage(image_path = bg_file_path,
-                                     drawing_mode = IMAGE_MODE_FILL)
+# THEME SETUP
+menu_theme = Theme()
+menu_theme.background_color = BaseImage(image_path=bg_file_path, drawing_mode=IMAGE_MODE_FILL)
+menu_theme.title_background_color = NAVY
+menu_theme.title_font_color = MIST
+menu_theme.widget_background_color = NAVY
+menu_theme.widget_font_color = MIST
+menu_theme.widget_background_inflate = (10, 10)
+menu_theme.widget_margin = (0, 50)
 
-# Menu setup
-menu = pm.Menu(title = "Main Menu",
-               width = WIDTH,
-               height = HEIGHT,
-               theme = menu_bg)
+# CHARACTER SELECTION MENU SETUP
+character_select = pm.Menu(title = "Main Menu", width = WIDTH, height = HEIGHT, theme = menu_theme)
+character_select.add.button(title="Play")
 
-# Settings button. If clicked, it takes to the settings menu
-menu.add.button(title="Play",
-                font_color=MIST,
-                background_color=NAVY,
-                background_inflate = (10, 10))
-
-# Dummy label to add some spacing between the settings button and exit button
-menu.add.label(title="")
-
+# MAIN MENU SETUP
+menu = pm.Menu(title = "Main Menu", width = WIDTH, height = HEIGHT, theme = menu_theme)
+# Character Selection Button. If clicked, it takes to the character selection menu
+menu.add.button(title = "Character Select", action = character_select,)
 # Exit Button. If clicked, it closes the window
-menu.add.button(title="Exit", action=pm.events.EXIT,
-                font_color=MIST,
-                background_color=NAVY,
-                background_inflate = (10, 10))
+menu.add.button(title="Exit", action=pm.events.EXIT,)
 
 menu.mainloop(screen)
 
