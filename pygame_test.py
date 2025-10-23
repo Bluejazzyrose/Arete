@@ -48,7 +48,8 @@ menu_theme.widget_background_inflate = (10, 10)
 menu_theme.widget_margin = (0, 50)
 
 # CHARACTER SELECTION MENU SETUP
-character_select = pm.Menu(title = "Main Menu", width = WIDTH, height = HEIGHT, theme = menu_theme)
+character_select = pm.Menu(title = "Main Menu", width = WIDTH, height = HEIGHT,
+                           theme = menu_theme, overflow = (True, False))
 character_select.add.button(title="Play")
 
 # MAIN MENU SETUP
