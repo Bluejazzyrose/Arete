@@ -24,12 +24,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Arete")
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-bg_file_name = "Graphics\Arete_BG_Clouds.png"
+bg_file_name = "Graphics\\Arete_BG_Clouds.png"
 bg_file_path = os.path.join(script_dir, bg_file_name)
-
-background_image = pygame.image.load(bg_file_path).convert_alpha()
-background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
-screen.blit(background_image, (0, 0))
 
 # Color constants
 MIST = (243, 248, 255)
