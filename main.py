@@ -207,10 +207,10 @@ def main():
                 print("You need to create or load a character before you can play.")
         # Create a new character
         elif choice == '2':
-            player, mname = game.create_character()
+            player, mname = create_character()
         # Load a preexisting character
         elif choice == '3':
-            player, mname = game.load_character()
+            player, mname = load_character()
         # View character stats
         elif choice == '4':
             if player:
