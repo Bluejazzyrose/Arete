@@ -34,7 +34,12 @@ def load_characters():
     return characters
 
 def main():
-    menu = PyMenu()
+    """info = pygame.display.Info()
+    desktop_width = info.current_w
+    desktop_height = info.current_h"""
+    desktop_height = 1080
+    desktop_width = 1920
+    menu = PyMenu(desktop_height, desktop_width)
     # Open the main menu
     menu.open_main_menu()
     

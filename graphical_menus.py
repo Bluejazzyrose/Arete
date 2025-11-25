@@ -37,12 +37,12 @@ for index, c in characters.iterrows():
 
 # Pygame Menu class
 class PyMenu:
-    def __init__(self, h = 1080, w = 1920):
+    def __init__(self, height, width):
         # Initialize Pygame
         pygame.init()
         # Screen size setup
-        self.HEIGHT = h
-        self.WIDTH = w
+        self.HEIGHT = height
+        self.WIDTH = width
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("Arete")
 
