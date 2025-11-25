@@ -6,8 +6,32 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race classes and maps are imported from separate files
 """
 
-import pygame
+import pygame, pandas
+from file_paths import get_character_save_file
 from graphical_menus import PyMenu
+from player_character.dryad import Dryad
+from player_character.fury import Fury
+from player_character.naiad import Naiad
+from player_character.satyr import Satyr
+
+# LOAD & TRANSLATE CHARACTERS FROM THE CSV FILE
+def load_characters():
+    df = pandas.read_csv(get_character_save_file())
+    characters = []
+    for index, c in df.iterrows():
+        if c['race'] == 'dryad':
+            character = Dryad(c['name'])
+        elif c['race'] == 'satyr':
+            character = Satyr(c['name'])
+        elif c['race'] == 'fury':
+            character = Fury(c['name'])
+        elif c['race'] == 'naiad':
+            character = Naiad(c['name'])
+        character.x = c['x']
+        character.y = c['y']
+        character.hp = c['hp']
+        characters.append(character)
+    return characters
 
 def main():
     menu = PyMenu()
