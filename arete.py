@@ -25,7 +25,7 @@ gameplay methods/function:  move, interact, arete, main
 class Arete:
     def __init__(self, mname):
         # create Map from dataframe
-        current_map = Map(mname)
+        self.current_map = Map(mname)
 
     """
     move method

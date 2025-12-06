@@ -183,7 +183,7 @@ def main():
 
     # Define variables
     player = None
-    game = Arete()
+    game = Arete("elder_growth")
     
     #Main Menu
     print("\nWelcome, hoplite, to Arete: a game inspired by Greek mythology!")
