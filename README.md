@@ -19,6 +19,7 @@ Progress Report:
 1. So far I’ve created and tested the Player class, and the four derived classes Dryad, Satyr, Fury, and Naiad. I also created a class called Mythos to handle gameplay methods, and separated main, Mythos, and the individual Player Classes into separate py files, with the Player-related files stored in their own package. I wrote a user interface menu in main, and have started working on the map logic using csv files. I am having difficulty getting that to work, but I’m sure I’ll figure it out, or find a reference for someone who did.
 2. Of course the thing causing difficulty with the maps for three weeks was an erroneous comma. With that fixed, the map logic now functions. The player’s position changes accordingly with the map shift. I’ve also fixed the logic for inanimate objects, npcs, and mobs, so that the player can interact with objects on the map if they share a space. Eventually I’d like to add inventory capabilities, which would allow for quests in the future. For the file interaction requirement, I’ll either mess with inventory or add character/map position saving capabilities so you don’t start over every time you play.
 3. I have added a csv file to handle character save capabilities. The program will save a character, including their current xy position, current map, and current hp when the character is created, and will update the data in the csv to reflect play changes when the user exits the game. There is verification to prevent multiple characters with the same name so that there are no issues retrieving data from the csv file.
+4. I am making a switch from csv files to json for save capabilities and map/environment storage. It should be more straightforward logic, and hopefully will run faster too.
 
 References for Python:
 * [How to check if a variable exists](https://stackoverflow.com/questions/843277/how-do-i-check-if-a-variable-exists)
@@ -53,6 +54,8 @@ References for Python:
     * [Fill a grid using Javascript and/or CSS](https://stackoverflow.com/questions/57550082/creating-a-16x16-grid-using-javascript)
     * [Make a div that scrolls vertically](https://www.geeksforgeeks.org/making-a-div-vertically-scrollable-using-css/)
     * [Get & post](https://healeycodes.com/talking-between-languages)
+* AI
+    * I have been working with an AI model for troubleshooting and bug catching, and for some help with structure and syntax difficulties and questions. [This is a link to the conversation.](https://chatgpt.com/g/g-p-6988df8187e8819188eaf225a775cc5c-arete/project)
 
 References for Greek Mythology:
 * [Locations in Greek mythology](https://www.greekmythology.com/Myths/Places/places.html)
