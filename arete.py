@@ -6,10 +6,7 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race classes and maps are imported from separate files
 """
 
-import pandas
-import os
-
-from maps.map import Map
+from Arete.maps.map import Map
 from player_character.satyr import Satyr
 
 

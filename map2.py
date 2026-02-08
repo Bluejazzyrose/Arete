@@ -40,19 +40,18 @@ class Map:
 
 
 # test logic
-file_route = get_maps_file()
+file_route = get_maps_file("grasslands")
 
 with open(file_route) as f:
-    map_files = json.load(f)
+    maps_dicts = json.load(f)
 
-def load_map_by_name(map_files, map_name):
-    for data in map_files:
-        for map_entry in data["maps"]:
-            if map_entry["name"] == map_name:
-                return Map.from_dict(map_entry)
+def load_map_by_name(map_dicts, map_name):
+    for map_entry in map_dicts["maps"]:
+        if map_entry["name"] == map_name:
+            return Map.from_dict(map_entry)
     raise KeyError(f"Map '{map_name}' not found")
 
-elder_growth = load_map_by_name(map_files, "Elder Growth")
+elder_growth = load_map_by_name(maps_dicts, "Elder Growth")
     
 print(elder_growth.name)
 print(elder_growth.portals)
