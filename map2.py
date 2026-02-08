@@ -43,16 +43,16 @@ class Map:
 file_route = get_maps_file()
 
 with open(file_route) as f:
-    map_save_data = json.load(f)
+    map_files = json.load(f)
 
-def load_map_by_name(map_save_data, map_name):
-    for map_entry in map_save_data["maps"]:
-        if map_entry["name"] == map_name:
-            return Map.from_dict(map_entry)
-
+def load_map_by_name(map_files, map_name):
+    for data in map_files:
+        for map_entry in data["maps"]:
+            if map_entry["name"] == map_name:
+                return Map.from_dict(map_entry)
     raise KeyError(f"Map '{map_name}' not found")
 
-elder_growth = load_map_by_name(map_save_data, "Elder Growth")
+elder_growth = load_map_by_name(map_files, "Elder Growth")
     
 print(elder_growth.name)
 print(elder_growth.portals)
