@@ -39,19 +39,29 @@ class Map:
         )
 
 
-# test logic
-file_route = get_maps_file("grasslands")
+"""
+Map related functions not in the map object class
+"""
 
-with open(file_route) as f:
-    maps_dicts = json.load(f)
+def load_map_by_name(file_name, map_name):
+    # get the path to the appropriate map file
+    file_route = get_maps_file(file_name)
 
-def load_map_by_name(map_dicts, map_name):
+    # open and load the json file into map_dicts
+    with open(file_route) as f:
+        map_dicts = json.load(f)
+    
+    # find the correct map in the file and objectify it 
     for map_entry in map_dicts["maps"]:
         if map_entry["name"] == map_name:
             return Map.from_dict(map_entry)
+    
+    # raise an error if the map doesn't exist
     raise KeyError(f"Map '{map_name}' not found")
 
-elder_growth = load_map_by_name(maps_dicts, "Elder Growth")
+
+# test logic
+elder_growth = load_map_by_name("grasslands", "Elder Growth")
     
 print(elder_growth.name)
 print(elder_growth.portals)
