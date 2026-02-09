@@ -28,7 +28,7 @@ class Map:
             "spaces": self.spaces,
             "entities": self.entities
         }
-    
+
     @classmethod
     def from_dict(cls, data):
         return cls(
@@ -50,19 +50,19 @@ def load_map_by_name(file_name, map_name):
     # open and load the json file into map_dicts
     with open(file_route) as f:
         map_dicts = json.load(f)
-    
+
     # find the correct map in the file and objectify it 
     for map_entry in map_dicts["maps"]:
         if map_entry["name"] == map_name:
             return Map.from_dict(map_entry)
-    
+
     # raise an error if the map doesn't exist
     raise KeyError(f"Map '{map_name}' not found")
 
 
 # test logic
 elder_growth = load_map_by_name("grasslands", "Elder Growth")
-    
+
 print(elder_growth.name)
 print(elder_growth.portals)
 for row in elder_growth.spaces:
