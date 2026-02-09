@@ -14,9 +14,9 @@ At this point, simply verifies that the object exists
 """
 
 class Entity:
-    def __init__(self, x, y, name):
-        self.x = x
-        self.y = y
+    def __init__(self, xy, name):
+        self.x = xy[0]
+        self.y = xy[1]
         self.name = name
 
     def __repr__(self):
@@ -32,11 +32,11 @@ At this point, simply verifies that the object exists
 """
 
 class Inanimate(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name)
+    def __init__(self, xy, name):
+        super().__init__(xy, name)
 
     def __repr__(self):
-        return f"Inanimate: {self.name} - position: {self.x},{self.y}"
+        return f"Inanimate: {self.name} - position: {self.x}, {self.y}"
 
     def interact(self):
         super().interact()
@@ -48,11 +48,11 @@ At this point, simply verifies that the npc exists
 """
 
 class Npc(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name)
+    def __init__(self, xy, name):
+        super().__init__(xy, name)
 
     def __repr__(self):
-        return f"Npc: {self.name} - position: {self.x},{self.y}"
+        return f"Npc: {self.name} - position: {self.x}, {self.y}"
 
     def interact(self):
         super().interact()
@@ -64,18 +64,18 @@ At this point, simply verifies that the mob exists
 """
 
 class Mob(Entity):
-    def __init__(self, x, y, name, hostile):
-        super().__init__(x, y, name)
-        if hostile == 'y':
+    def __init__(self, xy, name, status):
+        super().__init__(xy, name)
+        if status == "hostile":
             self.hostile = True
-        else:
+        elif status == "friendly":
             self.hostile = False
 
     def __repr__(self):
         if self.hostile:
-            return f"{self.name} - position: {self.x},{self.y}. {self.name} is hostile."
+            return f"{self.name} - position: {self.x}, {self.y}. {self.name} is hostile."
         else:
-            return f"{self.name} - position: {self.x},{self.y}. {self.name} is friendly."
+            return f"{self.name} - position: {self.x}, {self.y}. {self.name} is friendly."
 
     def interact(self):
         super().interact()

@@ -7,7 +7,7 @@ Map class
 """
 import pandas
 
-from npc_mob_inanimate import Npc, Inanimate, Mob
+from Arete.entities import Npc, Inanimate, Mob
 
 """
 Map class

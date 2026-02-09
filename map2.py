@@ -8,6 +8,7 @@ Map class
 
 import json
 from file_paths import get_maps_file
+from Arete.entities import Npc, Inanimate, Mob
 
 """
 Map class
@@ -19,7 +20,16 @@ class Map:
         self.name = name
         self.portals = portals
         self.spaces = spaces
-        self. entities = entities
+        self.entities = [] # list to build entities in
+
+        # build appropriate entity objects for each entry in the map data
+        for e in entities:
+            if e["type"] == "inanimate":
+                self.entities.append(Inanimate(e["position"], e["name"]))
+            elif e["type"] == "mob":
+                self.entities.append(Mob(e["position"], e["name"], e["status"]))
+            elif e["type"] == "npc":
+                self.entities.append(Npc(e["position"], e["name"]))
 
     def to_dict(self):
         return {
@@ -61,10 +71,11 @@ def load_map_by_name(file_name, map_name):
 
 
 # test logic
-elder_growth = load_map_by_name("grasslands", "Elder Growth")
+elder_growth = load_map_by_name("grasslands", "Plutus' Fields")
 
 print(elder_growth.name)
 print(elder_growth.portals)
 for row in elder_growth.spaces:
     print(row)
-print(elder_growth.entities)
+for item in elder_growth.entities:
+    print(item)

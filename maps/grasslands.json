@@ -28,7 +28,9 @@
                 ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"]
             ],
             "entities": [
-                [14, 14, "inanimate", "Pandora's Box"]
+                {"name": "Pandora's Box",
+                "type": "inanimate",
+                "position": [14, 14]}
             ]
         },
 
@@ -59,17 +61,41 @@
                 ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"]
             ],
             "entities": [
-                [11, 9, "inanimate", "Wheat"],
-                [11, 10, "inanimate", "Wheat"],
-                [11, 11, "inanimate", "Wheat"],
-                [12, 9, "inanimate", "Wheat"],
-                [12, 10, "inanimate", "Wheat"],
-                [12, 11, "inanimate", "Wheat"],
-                [13, 9, "inanimate", "Wheat"],
-                [13, 10, "inanimate", "Wheat"],
-                [13, 11, "inanimate", "Wheat"],
-                [12, 14, "mob", "Sheep"],
-                [14, 14, "mob", "Sheep"]
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [11, 9]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [11, 10]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [11, 11]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [12, 9]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [12, 10]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [12, 11]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [13, 9]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [13, 10]},
+                {"name": "Wheat",
+                "type": "inanimate",
+                "position": [13, 11]},
+                {"name": "Sheep",
+                "type": "mob",
+                "status": "friendly",
+                "position": [12, 14]},
+                {"name": "Sheep",
+                "type": "mob",
+                "status": "friendly",
+                "position": [14, 14]}
             ]
         }
     ]
