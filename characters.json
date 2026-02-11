@@ -1,0 +1,35 @@
+{
+    "characters": [
+        {
+            "name": "Jax",
+            "race": "satyr",
+            "hp": 25,
+            "position": [4, 4],
+            "map": "Plutus' Fields"
+        },
+
+        {
+            "name": "Fern",
+            "race": "dryad",
+            "hp": 42,
+            "position": [8, 8],
+            "map": "Elder Growth"
+        },
+
+        {
+            "name": "Stranger",
+            "race": "fury",
+            "hp": 0,
+            "position": [6, 6],
+            "map": "Plutus' Fields"
+        },
+
+        {
+            "name": "Jax",
+            "race": "satyr",
+            "hp": 21,
+            "position": [12, 12],
+            "map": "Elder Growth"
+        }
+    ]
+}

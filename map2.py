@@ -8,7 +8,7 @@ Map class
 
 import json
 from file_paths import get_maps_file
-from Arete.entities import Npc, Inanimate, Mob
+from entities import Npc, Inanimate, Mob
 
 """
 Map class
@@ -53,6 +53,11 @@ class Map:
 Map related functions not in the map object class
 """
 
+"""
+Load map by name function
+accesses the appropriate maps json file
+and builds a Map object from the data
+"""
 def load_map_by_name(file_name, map_name):
     # get the path to the appropriate map file
     file_route = get_maps_file(file_name)
@@ -69,13 +74,45 @@ def load_map_by_name(file_name, map_name):
     # raise an error if the map doesn't exist
     raise KeyError(f"Map '{map_name}' not found")
 
+"""
+Get space type function
+gets the type of the tile in question
+returns the type as a string
+"""
+def get_space_type(current_map: Map, coordinates: list):
+    # get the char representing the tile in question
+    tile_char = current_map.spaces[coordinates[0]][coordinates[1]]
+    # return the appropriate string representing the tile type
+    if tile_char == "X":
+        return "impass"
+    elif tile_char == "G":
+        return "outdoor"
+    elif tile_char == "A":
+        return "aquatic"
+    elif tile_char == "I":
+        return "interior"
+
+
+"""
+Check spaces function
+checks the type of the tiles being moved through/to
+returns true if there are no obstructions, otherwise false
+returns also the tile type
+"""
+
 
 # test logic
-elder_growth = load_map_by_name("grasslands", "Plutus' Fields")
 
+# test the map building function & map object
+elder_growth = load_map_by_name("grasslands", "Elder Growth")
+
+# print map details
 print(elder_growth.name)
 print(elder_growth.portals)
 for row in elder_growth.spaces:
     print(row)
 for item in elder_growth.entities:
     print(item)
+
+# test the tile type collection function
+print(get_space_type(elder_growth, [8, 8]))
