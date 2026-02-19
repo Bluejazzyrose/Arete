@@ -6,7 +6,7 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Naiad race child class, derived from Player
 """
 
-from player_character.player import Player
+from Arete.player_character.player_old import Player
 
 """
 Naiad Character Class

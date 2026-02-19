@@ -24,6 +24,23 @@ class Player:
         print('All stats and abilities have been reset to original values and status.')
         self.status = 'none'
 
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "portals": self.portals,
+            "spaces": self.spaces,
+            "entities": self.entities
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            name = data["name"],
+            portals = data["portals"],
+            spaces = data["spaces"],
+            entities = data["entities"]
+        )
+
 
 """
 Dryad Plant Class

@@ -5,7 +5,7 @@ Vision: open-world MMO without leveling crawl, inspired by Greek mythology
 Fury race child class, derived from Player
 """
 
-from player_character.player import Player
+from Arete.player_character.player_old import Player
 
 """
 Fury Character Class

@@ -6,7 +6,7 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Dryad race child class, derived from Player
 """
 
-from player_character.player import Player
+from Arete.player_character.player_old import Player
 
 class DryadPlant:
     def __init__(self, x, y, is_tree):

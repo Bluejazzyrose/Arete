@@ -7,7 +7,7 @@ Satyr race child class, derived from Player
 """
 
 from player_character.dryad import DryadPlant
-from player_character.player import Player
+from Arete.player_character.player_old import Player
 
 """
 Satyr Character Class

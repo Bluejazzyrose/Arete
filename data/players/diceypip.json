@@ -1,0 +1,10 @@
+{
+    "player username": "Diceypip",
+    "characters": {
+            "name": "Patience",
+            "race": "fury",
+            "hp": 10,
+            "position": [12, 12],
+            "map": "Elder Growth"
+        }
+}

@@ -1,0 +1,10 @@
+{
+    "player username": "Jazzyrose",
+    "characters": {
+            "name": "Jax",
+            "race": "satyr",
+            "hp": 25,
+            "position": [4, 4],
+            "map": "Plutus' Fields"
+        }
+}
