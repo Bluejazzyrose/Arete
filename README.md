@@ -55,7 +55,7 @@ References for Python:
     * [Make a div that scrolls vertically](https://www.geeksforgeeks.org/making-a-div-vertically-scrollable-using-css/)
     * [Get & post](https://healeycodes.com/talking-between-languages)
 * AI
-    * I have been working with an AI model for troubleshooting and bug catching, and for some help with structure and syntax difficulties and questions. [This is a link to the conversation.](https://chatgpt.com/g/g-p-6988df8187e8819188eaf225a775cc5c-arete/project)
+    * I have been working with an AI model for troubleshooting and bug catching, and for some help with structure and syntax difficulties and questions. In particular it has been helpful in restructuring the project folder and files to be usable and sustainable long term. [This is a link to the conversation.](https://chatgpt.com/g/g-p-6988df8187e8819188eaf225a775cc5c-arete/project)
 
 References for Greek Mythology:
 * [Locations in Greek mythology](https://www.greekmythology.com/Myths/Places/places.html)
