@@ -1,10 +1,16 @@
 {
-    "player username": "Jazzyrose",
-    "characters": {
-            "name": "Jax",
-            "race": "satyr",
-            "hp": 25,
-            "position": [4, 4],
-            "map": "Plutus' Fields"
-        }
+    "username": "Jazzyrose",
+    "race": "satyr",
+    "position": {
+        "x": 4,
+        "y": 4,
+        "map": "Plutus' Fields"
+    },
+    "stats": {
+        "hp": 25,
+        "status": null
+    },
+    "inventory": [
+        {"item_id": "curio", "qty": 1}
+    ]
 }
