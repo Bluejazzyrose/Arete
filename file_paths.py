@@ -13,7 +13,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def get_maps_file(map_name):
     # Create a file path to the maps file
-    file_name = f"maps/{map_name}.json"
+    file_name = f"maps/{map_name}"
     file_route = os.path.join(SCRIPT_DIR, file_name)
     return file_route
 
