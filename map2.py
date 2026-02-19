@@ -9,6 +9,7 @@ Map class
 import json
 from file_paths import get_maps_file
 from entities import Npc, Inanimate, Mob
+from player_character.player2 import Player
 
 """
 Map class
@@ -48,6 +49,26 @@ class Map:
             entities = data["entities"]
         )
 
+    """
+    Get space type method
+    gets the type of the tile in question
+    returns the type as a string
+    """
+    def get_space_type(self, coordinates: list):
+        # get the char representing the tile in question
+        tile_char = self.spaces[coordinates[0]][coordinates[1]]
+        # return the appropriate string representing the tile type
+        if tile_char == "X":
+            return "impass"
+        elif tile_char == "G":
+            return "outdoor"
+        elif tile_char == "A":
+            return "aquatic"
+        elif tile_char == "I":
+            return "interior"
+        elif tile_char == "P":
+            return "portal"
+
 
 """
 Map related functions not in the map object class
@@ -74,31 +95,54 @@ def load_map_by_name(file_name, map_name):
     # raise an error if the map doesn't exist
     raise KeyError(f"Map '{map_name}' not found")
 
+
 """
-Get space type function
-gets the type of the tile in question
-returns the type as a string
+Change map function
+handles changing the map object data
+when the player moves to a portal space
+returns an updated map object
 """
-def get_space_type(current_map: Map, coordinates: list):
-    # get the char representing the tile in question
-    tile_char = current_map.spaces[coordinates[0]][coordinates[1]]
-    # return the appropriate string representing the tile type
-    if tile_char == "X":
-        return "impass"
-    elif tile_char == "G":
-        return "outdoor"
-    elif tile_char == "A":
-        return "aquatic"
-    elif tile_char == "I":
-        return "interior"
+def change_map(m: Map, xy: list):
+    # remember the last map for player placement on the new one
+    last_map = m.name
+    # variables to store new map identifier data
+    new_map = None
+    new_file = None
+    # locate the name and file for the new map
+    for entry in m.portals:
+        if entry[0] == xy[0] and entry[1] == xy[1]:
+            new_map = entry[2]
+            new_file = entry[3]
+            break
+    # return a map with the new data
+    return load_map_by_name(new_file, new_map)
 
 
 """
-Check spaces function
+Move function
 checks the type of the tiles being moved through/to
-returns true if there are no obstructions, otherwise false
-returns also the tile type
+moves the player if the checks yield no exceptions
+returns the tile type
 """
+def move(m: Map, player: Player, move: list):
+    # check each space in the direction moved for impass or portal spaces
+    for i in range(1, player.spd + 1):
+        # get the space type for the next space in the appropriate direction
+        x = player.position[0] + (move[0] * i)
+        y = player.position[1] + (move[1] * i)
+        tile_type = m.get_space_type([x, y])
+
+        # if there is a wall or a portal in the way, return prematurely
+        # if i has reached the max distance the player can move, return
+        if tile_type == "impass" or tile_type == "portal" or i == player.spd:
+            if tile_type == "impass":
+                print("There is an obstacle blocking your path.")
+            elif tile_type == "portal":
+                print("You have traversed through a portal to another map.")
+            else:
+                player.position = [x, y]
+                print(f"You have moved to {x}, {y}.")
+            return tile_type
 
 
 # test logic

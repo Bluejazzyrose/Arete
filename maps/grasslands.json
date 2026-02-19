@@ -1,11 +1,12 @@
 {
+    "file": "grasslands.json",
     "region": "Grasslands",
     
     "maps": [
         {
             "name": "Elder Growth",
             "portals": [
-                [16, 8, "Plutus' Fields"]
+                [16, 8, "Plutus' Fields", "grasslands.json"]
             ],
             "spaces": [
                 ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
@@ -37,8 +38,8 @@
         {
             "name": "Plutus' Fields",
             "portals": [
-                [0, 4, "Elder Growth"],
-                [16, 12, "Plutus' Shack"]
+                [0, 4, "Elder Growth", "grasslands.json"],
+                [16, 12, "Plutus' Shack", "grasslands.json"]
             ],
             "spaces": [
                 ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
