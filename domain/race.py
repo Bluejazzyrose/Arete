@@ -9,15 +9,17 @@ Player race parent and child classes
 from domain.race_factory import RaceFactory
 
 class Race:
-    def __init__(self, name, max_hp):
-        self.name = name
-        self.max_hp = max_hp
+    name = None
+    max_hp = None
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
 
         if cls.name is None:
             raise ValueError(f"{cls.__name__} must define a 'name' attribute.")
+        
+        if cls.max_hp is None:
+            raise TypeError(f"{cls.__name__} must define 'max_hp'")
 
         RaceFactory.register(cls)
 

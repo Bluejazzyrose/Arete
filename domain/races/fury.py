@@ -6,11 +6,11 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race parent and child classes
 """
 
-from Arete.domain.race import Race
+from domain.race import Race
 
 class FuryRace(Race):
-    def __init__(self):
-        super().__init__(name="Fury", max_hp=10)
+    name = "Fury"
+    max_hp = 10
 
     def innate_tick(self, world, player):
         if player.hp <= 0:

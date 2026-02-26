@@ -6,11 +6,11 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race parent and child classes
 """
 
-from ..race import Race
+from domain.race import Race
 
 class DryadRace(Race):
-    def __init__(self):
-        super().__init__(name="Dryad", max_hp=50)
+    name = "Dryad"
+    max_hp = 50
 
     def innate_tick(self, world, player):
         if world.get_space_type(player.position) == "outdoor":
