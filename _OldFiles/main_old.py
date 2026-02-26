@@ -10,7 +10,7 @@ Player race classes and maps are imported from separate files
 import pandas
 import os
 
-from arete import Arete
+from Arete._OldFiles.arete import Arete
 from player_character.dryad import Dryad
 from player_character.fury import Fury
 from player_character.naiad import Naiad
