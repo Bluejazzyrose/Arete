@@ -6,7 +6,7 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race parent and child classes
 """
 
-from race import Race
+from Arete.domain.race import Race
 
 class SatyrRace(Race):
     def __init__(self):

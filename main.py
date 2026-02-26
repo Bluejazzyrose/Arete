@@ -6,4 +6,11 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Main py file
 """
 
-import core.load_races
+from domain.load_races import load_all_races
+
+def main():
+    load_all_races()
+    print("Hi!")
+
+if __name__ == "__main__":
+    main()

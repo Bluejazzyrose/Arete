@@ -6,7 +6,7 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race parent and child classes
 """
 
-from race import Race
+from ..race import Race
 
 class DryadRace(Race):
     def __init__(self):
