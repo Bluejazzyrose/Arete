@@ -6,11 +6,15 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player class
 """
 
+import json
+from domain.race_factory import RaceFactory
+
 class Player:
+    # initializes a NEW character
     def __init__(self, username, position, race):
-        self.username = username
-        self.position = position
-        self.race = race
+        self.username = username    # string that will correspond to the user's json file name
+        self.position = position    # list with 2 ints
+        self.race = race            # Race object
 
         self.hp = race.max_hp
         self.status = None
@@ -19,26 +23,31 @@ class Player:
         # general-purpose resource container
         self.resources = {}
 
+    # loads a PREEXISTING character from data from a json file
     @classmethod
-    def load(cls, filepath):
-        with open(filepath) as f:
-            data = json.load(f)
-
+    def load(cls, data):
+        # create a Race object from the character data
         race = RaceFactory.create(data["race"])
 
+        # create a position variable from the character data
+        position = (data["position"]["x"], data["position"]["y"])
+
+        # create a Player object from the loaded and processed data
         player = cls(
             username=data["username"],
-            race=race,
-            x=data["position"]["x"],
-            y=data["position"]["y"]
+            position=position,
+            race=race
         )
 
+        # update changeable variables to reflect file data
         player.hp = data["stats"]["hp"]
         player.status = data["stats"]["status"]
         player.inventory = data["inventory"]
 
+        # return the finished Player object
         return player
     
+    # updates the player's position
     def move(self, direction, game_map):
         new_x, new_y = self.race.calculate_movement(
             direction, self.x, self.y, self.spd

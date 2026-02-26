@@ -23,6 +23,9 @@ class Race:
 
         RaceFactory.register(cls)
 
+    def __repr__(self):
+        return self.name
+
     def innate_tick(self, world, player):
         pass
 
