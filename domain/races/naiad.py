@@ -10,7 +10,7 @@ from ..race import Race
 
 class NaiadRace(Race):
     def __init__(self):
-        super().__init__("Naiad", max_hp=25)
+        super().__init__(name="Naiad", max_hp=25)
 
     def innate_tick(self, world, player):
         player.resources.setdefault("aqua", 0)

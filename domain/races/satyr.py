@@ -10,7 +10,7 @@ from Arete.domain.race import Race
 
 class SatyrRace(Race):
     def __init__(self):
-        super().__init__("Satyr", max_hp=25)
+        super().__init__(name="Satyr", max_hp=25)
 
     def innate_tick(self, world, player):
         player.resources.setdefault("bound", 10)

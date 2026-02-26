@@ -10,7 +10,7 @@ from ..race import Race
 
 class DryadRace(Race):
     def __init__(self):
-        super().__init__("Dryad", max_hp=50)
+        super().__init__(name="Dryad", max_hp=50)
 
     def innate_tick(self, world, player):
         if world.get_space_type(player.position) == "outdoor":
