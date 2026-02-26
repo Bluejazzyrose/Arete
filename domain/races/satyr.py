@@ -24,11 +24,11 @@ class SatyrRace(Race):
                 player.resources["is_bounding"] = False
                 player.spd = 1
 
-    def ability_one(self, world, player):
+    def ability1(self, world, player):
         # Head Charge
         pass
 
-    def ability_two(self, world, player):
+    def ability2(self, world, player):
         # Toggle Bound
         if not player.resources.get("is_bounding", False):
             player.resources["is_bounding"] = True

@@ -6,7 +6,7 @@ Prominent feature: unique death mechanics, not just 'respawn'
 Player race parent and child classes
 """
 
-from race_factory import RaceFactory
+from domain.race_factory import RaceFactory
 
 class Race:
     def __init__(self, name, max_hp):
@@ -22,4 +22,10 @@ class Race:
         RaceFactory.register(cls)
 
     def innate_tick(self, world, player):
+        pass
+
+    def ability1(self, world, player):
+        pass
+
+    def ability2(self, world, player):
         pass

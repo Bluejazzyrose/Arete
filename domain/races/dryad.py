@@ -22,11 +22,11 @@ class DryadRace(Race):
                     player.hp += 1
                 player.resources["photosynthesis"] = 0
 
-    def ability_one(self, world, player):
+    def ability1(self, world, player):
         # Grappling Vines
         pass
 
-    def ability_two(self, world, player):
+    def ability2(self, world, player):
         # Healing Shrub
         world.spawn_entity(
             entity_type="DryadPlant",

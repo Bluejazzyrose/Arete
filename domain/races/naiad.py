@@ -24,9 +24,9 @@ class NaiadRace(Race):
                     player.hp += 1
                 player.resources["aqua"] = 0
 
-    def ability_one(self, world, player):
+    def ability1(self, world, player):
         # Create puddle AoE area
         pass
 
-    def ability_two(self, world, player):
+    def ability2(self, world, player):
         player.resources["puddle"] = not player.resources.get("puddle", False)

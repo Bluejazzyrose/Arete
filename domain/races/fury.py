@@ -23,7 +23,7 @@ class FuryRace(Race):
         if player.resources["kindled_on"]:
             player.resources["kindling"] += 1
 
-    def ability_one(self, world, player):
+    def ability1(self, world, player):
         # Toggle Kindled Fury
         if player.resources["kindled_on"]:
             damage = player.resources["kindling"] ** 2
@@ -34,6 +34,6 @@ class FuryRace(Race):
         else:
             player.resources["kindled_on"] = True
 
-    def ability_two(self, world, player):
+    def ability2(self, world, player):
         # Toggle Friendly Fire
         player.resources["friendly_fire"] = not player.resources.get("friendly_fire", False)
